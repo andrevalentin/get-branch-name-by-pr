@@ -8,8 +8,6 @@ async function run() {
 
         const prNumber = getPrNumber(userSuppliedPrId);
 
-        console.log(github.context.repo);
-
         if (!prNumber) {
             core.setFailed("Pull request number was neither set by user nor obtainable by context");
         }
@@ -21,8 +19,6 @@ async function run() {
             repo: github.context.repo.repo,
             pull_number: prNumber
         });
-
-        console.log(response);
 
         core.setOutput("branch", response.data.head.ref);
     } catch (error) {
