@@ -5727,7 +5727,7 @@ async function run() {
             core.setFailed("Pull request number was neither set by user nor obtainable by context");
         }
 
-        const octokit = new github.GitHub(token);
+        const octokit = new github.getOctokit(token);
 
         const response = await octokit.pulls.get({
             owner: owner,
